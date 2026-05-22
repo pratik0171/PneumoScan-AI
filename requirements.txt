@@ -1,0 +1,11 @@
+tensorflow==2.10.1
+numpy==1.23.5
+protobuf==3.20.3
+pandas
+opencv-python
+matplotlib
+scikit-learn
+streamlit
+pillow
+seaborn
+h5py
