@@ -8,3 +8,4 @@ streamlit
 pillow
 seaborn
 h5py
+gdown
