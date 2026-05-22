@@ -3,9 +3,20 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from PIL import Image
+import os
+import gdown
 
-# Load trained model
-model = tf.keras.models.load_model("pneumonia_model.keras")
+# Google Drive model URL
+MODEL_URL = "https://drive.google.com/uc?id=1bD1VlzRukO_2yM4WOV4X_FOgvT_nivT7"
+
+MODEL_PATH = "pneumonia_model.keras"
+
+# Download model if not present
+if not os.path.exists(MODEL_PATH):
+    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+
+# Load model
+model = tf.keras.models.load_model(MODEL_PATH)
 
 # Title
 st.title("AI Medical Diagnosis System")
@@ -20,15 +31,16 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
 
-    # Display image
+    # Open image
     img = Image.open(uploaded_file).convert("RGB")
 
+    # Display image
     st.image(img, caption="Uploaded X-ray", use_container_width=True)
 
     # Resize image
     img = img.resize((224, 224))
 
-    # Convert image to array
+    # Convert to array
     img_array = image.img_to_array(img)
 
     # Normalize
