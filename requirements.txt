@@ -1,8 +1,7 @@
-tensorflow
+tensorflow==2.19.0
 numpy
-protobuf
 pandas
-opencv-python
+opencv-python-headless
 matplotlib
 scikit-learn
 streamlit
